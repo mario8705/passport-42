@@ -59,7 +59,7 @@ describe('Strategy#userProfile', function() {
     var strategy =  new FortyTwoStrategy({
       clientID: 'ABC123',
       clientSecret: 'secret',
-      userProfileURL: 'https://api.intra.42.fr/alpha/me'
+      profileURL: 'https://api.intra.42.fr/alpha/me'
     }, function() {});
   
     strategy._oauth2.get = function(url, accessToken, callback) {
