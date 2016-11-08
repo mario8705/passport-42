@@ -35,35 +35,35 @@ describe('Strategy', function() {
     });
   })
 
-//  describe('failure caused by user denying request', function() {
-//    var strategy = new FortyTwoStrategy({
-//        clientID: 'ABC123',
-//        clientSecret: 'secret'
-//      }, function() {});
-//
-//    var info;
-//
-//    before(function(done) {
-//      chai.passport.use(strategy)
-//        .fail(function(i) {
-//          info = i;
-//          done();
-//        })
-//        .req(function(req) {
-//          req.query = {};
-//          req.query.error = 'access_denied';
-//          req.query.error_code = '200';
-//          req.query.error_description  = 'Permissions error';
-//          req.query.error_reason = 'user_denied';
-//        })
-//        .authenticate();
-//    });
-//
-//    it('should fail with info', function() {
-//      expect(info).to.not.be.undefined;
-//      expect(info.message).to.equal('Permissions error');
-//    });
-//  });
+  describe('failure caused by user denying request', function() {
+    var strategy = new FortyTwoStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+
+    var info;
+
+    before(function(done) {
+      chai.passport.use(strategy)
+        .fail(function(i) {
+          info = i;
+          done();
+        })
+        .req(function(req) {
+          req.query = {};
+          req.query.error = 'access_denied';
+          req.query.error_code = '200';
+          req.query.error_description  = 'Permissions error';
+          req.query.error_reason = 'user_denied';
+        })
+        .authenticate();
+    });
+
+    it('should fail with info', function() {
+      expect(info).to.not.be.undefined;
+      expect(info.message).to.equal('Permissions error');
+    });
+  });
 
   describe('constructed with customHeaders option, including User-Agent field', function() {
     var strategy = new FortyTwoStrategy({
@@ -157,7 +157,7 @@ describe('Strategy', function() {
           req.query = {};
           req.query.code = 'SplxlOBeZQQYbYS6WxSbIA+ALT1';
         })
-        .authenticate({ display: 'mobile' }); // TODO
+        .authenticate(); // TODO
     });
 
     it('should authenticate user', function() {
