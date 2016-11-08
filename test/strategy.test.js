@@ -125,7 +125,7 @@ describe('Strategy', function() {
         if (url != 'https://api.intra.42.fr/v2/me') { return callback(new Error('wrong url argument')); }
         if (accessToken != 's3cr1t-t0k3n') { return callback(new Error('wrong token argument')); }
 
-        var body = '{ "login": "codooku", "id": 1, "name": "Count Dooku", "email": "codooku@student.42.fr", "html_url": "https://api.intra.42.fr/v2/users/codooku" }'; // TODO
+        var body = '{ "id": 46, "email": "codooku@student.42.fr", "login": "codooku", "first_name": "Count", "last_name": "Dooku", "url": "https://api.intra.42.fr/v2/users/codooku", "phone": null, "displayname": "Count Dooku", "image_url": "https://cdn.intra.42.fr/images/empty.png" }';
         callback(null, body, undefined);
       };
     }
@@ -157,11 +157,11 @@ describe('Strategy', function() {
           req.query = {};
           req.query.code = 'SplxlOBeZQQYbYS6WxSbIA+ALT1';
         })
-        .authenticate(); // TODO
+        .authenticate();
     });
 
     it('should authenticate user', function() {
-      expect(user.id).to.equal('1');
+      expect(user.id).to.equal('46');
       expect(user.username).to.equal('codooku');
     });
   });
