@@ -183,7 +183,7 @@ describe('Strategy', function() {
       this._oauth2.getOAuthAccessToken = function(code, options, callback) {
         return callback({
           statusCode: 401,
-          data: '{"error":"bad_verification_code","error_description":"The code passed is incorrect or expired.","error_uri":"https://developer.github.com/v3/oauth/#bad-verification-code"}' });
+          data: '{"error":"bad_verification_code","error_description":"The code passed is incorrect or expired."}' });
       };
     }
     util.inherits(MockOAuth2Strategy, OAuth2Strategy);
